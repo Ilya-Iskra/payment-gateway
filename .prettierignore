@@ -1,0 +1,5 @@
+# Ignore npm package
+package.json
+# Ignore npm and pnpm lock files:
+package-lock.json
+pnpm-lock.yaml
