@@ -1,0 +1,72 @@
+.background-texture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.figure {
+  width: 14px;
+  position: absolute;
+  animation: figure-flow linear infinite alternate both;
+}
+
+@keyframes figure-flow {
+  10% {
+    transform: translate(500%, 500%) rotate(90deg);
+  }
+  20% {
+    transform: translate(500%, -500%) rotate(360deg);
+  }
+  30% {
+    transform: translate(-500%, 500%) rotate(180deg);
+  }
+  40% {
+    transform: translate(-500%, -500%) rotate(-90deg);
+  }
+  50% {
+    transform: translate(500%, -500%) rotate(90deg);
+  }
+  60% {
+    transform: translate(-500%, 500%) rotate(180deg);
+  }
+  70% {
+    transform: translate(-500%, -500%) rotate(360deg);
+  }
+  80% {
+    transform: translate(-500%, 500%) rotate(180deg);
+  }
+  90% {
+    transform: translate(-500%, -500%) rotate(-90deg);
+  }
+  100% {
+    transform: translate(500%, -500%) rotate(90deg);
+  }
+}
+
+.wave {
+  min-width: calc(1% * var(--width));
+  --translate-by: calc(-100% * (1 - 100 / var(--width)));
+  max-width: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: wave-flow 60s linear infinite alternate both;
+}
+
+.wave.foreground {
+  height: 30%;
+  --width: 125;
+}
+.wave.background {
+  height: 40%;
+  --width: 110;
+}
+
+@keyframes wave-flow {
+  to {
+    transform: translate(var(--translate-by));
+  }
+}
