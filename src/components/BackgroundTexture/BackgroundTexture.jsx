@@ -1,7 +1,7 @@
-import Triangle from "./elements/Triangle.jsx";
-import Rectangle from "./elements/Rectangle.jsx";
-import Cross from "./elements/Cross.jsx";
-import Round from "./elements/Round.jsx";
+import Triangle from "./elements/triangle.svg?react";
+import Rectangle from "./elements/rectangle.svg?react";
+import Cross from "./elements/cross.svg?react";
+import Round from "./elements/round.svg?react";
 import Waves from "./elements/Waves.jsx";
 import { generatePoints } from "./BackgroundTexture.helpers.js";
 import "./BackgroundTexture.css";
