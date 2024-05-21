@@ -1,8 +1,8 @@
 import "./ContentBox.css";
 
-function ContentBox({ children, style }) {
+function ContentBox({ children, style, className }) {
   return (
-    <div className="content-box" style={style}>
+    <div className={`content-box ${className}`} style={style}>
       {children}
     </div>
   );

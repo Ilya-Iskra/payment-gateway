@@ -4,6 +4,7 @@
   font-weight: 400;
 
   background: var(--background-color-1);
+  color: var(--foreground-color-1);
   overflow: hidden;
 
   font-synthesis: none;

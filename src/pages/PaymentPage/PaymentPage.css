@@ -1,0 +1,49 @@
+.payment-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 30px 48px;
+}
+
+.payment-page__header {
+  margin-bottom: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.payment-page__header-text {
+  font-size: 24px;
+}
+.payment-page__logo {
+  height: 44px;
+}
+
+.payment-page__price {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.payment-page__price-number {
+  font-size: 40px;
+  font-weight: 800;
+}
+.payment-page__price-name {
+  font-size: 18px;
+}
+
+.payment-page__lot {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+.payment-page__lot-name {
+  font-size: 18px;
+  font-weight: 600;
+}
+.payment-page__lot-description {
+  font-size: 8px;
+}
