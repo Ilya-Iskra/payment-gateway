@@ -1,6 +1,7 @@
 import Centered from "/src/layouts/Cetnered/Centered.layout";
 import ContentBox from "/src/components/ContentBox";
 import Logo from "/src/assets/logo.svg?react";
+import SendTransaction from "../../components/SendTransaction";
 import { ConnectKitButton } from "connectkit";
 import "./PaymentPage.css";
 
@@ -23,6 +24,7 @@ function PaymentPage() {
           <div className="payment-page__lot-description">for 15 requests</div>
         </div>
         <ConnectKitButton />
+        <SendTransaction />
       </ContentBox>
     </Centered>
   );
