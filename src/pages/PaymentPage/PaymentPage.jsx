@@ -1,7 +1,8 @@
 import Centered from "/src/layouts/Cetnered/Centered.layout";
 import ContentBox from "/src/components/ContentBox";
-import SendTransaction from "../../components/SendTransaction";
-import CopyableField from "../../components/CopyableField/CopyableField";
+import SendTransaction from "/src/components/SendTransaction";
+import CopyableField from "/src/components/CopyableField/CopyableField";
+import QRCode from "/src/components/QRCode";
 import { ConnectKitButton } from "connectkit";
 import Logo from "/src/assets/logo.svg?react";
 import "./PaymentPage.css";
@@ -14,13 +15,18 @@ function PaymentPage() {
           <div className="payment-page__header-text">Payment gateway</div>
           <Logo className="payment-page__logo" />
         </div>
+        <QRCode
+          address="0x9B345C57FAD706e349DA441E939282a4bCA0632E"
+          amount="0.0001"
+          className="payment-page__qr"
+        />
         <CopyableField
           className="payment-page__copy"
           data="0x9B345C57FAD706e349DA441E939282a4bCA0632E"
         />
         <div className="payment-page__price">
-          <span className="payment-page__price-number">407.24</span>
-          <span className="payment-page__price-name">AGIX</span>
+          <span className="payment-page__price-number">0.0001</span>
+          <span className="payment-page__price-name">ETH</span>
         </div>
         <div className="payment-page__lot">
           <div className="payment-page__lot-name">
