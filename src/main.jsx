@@ -4,6 +4,7 @@ import App from "./components/App";
 import "./vars.css";
 import "./reset.css";
 import "./index.css";
+import "./tooltip.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

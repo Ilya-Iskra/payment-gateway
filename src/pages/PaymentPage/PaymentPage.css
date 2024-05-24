@@ -19,6 +19,10 @@
   height: 44px;
 }
 
+.payment-page__copy {
+  margin-bottom: 10px;
+}
+
 .payment-page__price {
   margin-bottom: 10px;
   display: flex;
