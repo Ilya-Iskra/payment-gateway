@@ -28,9 +28,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Test env vars
-        run: echo "$VITE_PUBLIC_ALCHEMY_ID and $VITE_PUBLIC_WALLETCONNECT_PROJECT_ID"
-
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -63,6 +60,9 @@ jobs:
 
       - name: Build
         run: pnpm build
+        env:
+          VITE_PUBLIC_WALLETCONNECT_PROJECT_ID: ${{ vars.VITE_PUBLIC_WALLETCONNECT_PROJECT_ID }}
+          VITE_PUBLIC_ALCHEMY_ID: ${{ vars.VITE_PUBLIC_ALCHEMY_ID }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
