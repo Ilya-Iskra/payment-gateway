@@ -21,7 +21,7 @@ const qrCode = new QRCodeStyling({
   backgroundOptions: {
     color: "transparent",
   },
-  image: "/logo-head.svg",
+  image: "./logo-head.svg",
   imageOptions: {
     margin: 5,
   },
