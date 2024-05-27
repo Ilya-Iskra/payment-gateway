@@ -10,7 +10,7 @@ function CopyableField({ data, className, style }) {
   async function copyData() {
     await copyToClipboard(data);
     setIsCopied(true);
-    resetIsCopiedAfterDelay(5000);
+    resetIsCopiedAfterDelay(1500);
   }
 
   function resetIsCopiedAfterDelay(delayMs) {
@@ -22,15 +22,17 @@ function CopyableField({ data, className, style }) {
     <div
       className={`copyable-field ${className}`}
       style={style}
-      data-tooltip={isCopied ? "Copied!" : ""}
-      data-tooltip-flow={isCopied ? "bottom" : ""}
       onClick={copyData}
-      onMouseLeave={() => resetIsCopiedAfterDelay(200)}
     >
       <button className="copyable-field__copy">
         <Copy className="copyable-field__copy-icon" />
       </button>
       <div className="copyable-field__text">{data}</div>
+      <div
+        className={`copyable-field__tooltip ${isCopied && "copyable-field__tooltip--visible"}`}
+      >
+        Copied!
+      </div>
     </div>
   );
 }
