@@ -1,10 +1,9 @@
 import Centered from "/src/layouts/Cetnered/Centered.layout";
 import ContentBox from "/src/components/ContentBox";
-import SendTransaction from "/src/components/SendTransaction";
 import CopyableField from "/src/components/CopyableField/CopyableField";
 import QRCode from "/src/components/QRCode";
-import { ConnectKitButton } from "connectkit";
 import Logo from "/src/assets/logo.svg?react";
+import WalletConnectModule from "../../components/WalletConnectModule/WalletConnectModule";
 import "./PaymentPage.css";
 
 function PaymentPage() {
@@ -34,8 +33,7 @@ function PaymentPage() {
           </div>
           <div className="payment-page__lot-description">for 15 requests</div>
         </div>
-        <ConnectKitButton />
-        <SendTransaction />
+        <WalletConnectModule />
       </ContentBox>
     </Centered>
   );

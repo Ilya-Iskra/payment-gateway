@@ -1,0 +1,56 @@
+import { useBalance } from "wagmi";
+import { ChainIcon, Avatar } from "connectkit";
+import WalletConnectLogo from "/src/assets/walletConnectLogo.svg?react";
+import "./ConnectWallet.css";
+
+function ButtonInner({ isConnected, address, truncatedAddress, chain }) {
+  const { data: balance } = useBalance({
+    address,
+  });
+
+  if (!isConnected)
+    return (
+      <span className="connect-wallet__not-connected">
+        <span className="connect-wallet__not-connected-text">
+          Connect Wallet
+        </span>
+        <WalletConnectLogo className="connect-wallet__not-connected-icon" />
+      </span>
+    );
+  else
+    return (
+      <span className="connect-wallet__connected">
+        <span className="connect-wallet__connected-address">
+          <Avatar address={address} size={24} />{" "}
+          <span className="connect-wallet__connected-text">
+            {truncatedAddress}
+          </span>
+        </span>
+        <span
+          className={`connect-wallet__connected-balance ${balance?.formatted && "connect-wallet__connected-balance--loaded"}`}
+        >
+          <ChainIcon id={chain.id} size={16} />
+          {balance?.formatted}
+        </span>
+      </span>
+    );
+}
+
+export default function ConnectWallet({
+  isConnected,
+  address,
+  truncatedAddress,
+  chain,
+  onClick,
+}) {
+  return (
+    <button className="connect-wallet" onClick={onClick}>
+      <ButtonInner
+        isConnected={isConnected}
+        address={address}
+        truncatedAddress={truncatedAddress}
+        chain={chain}
+      />
+    </button>
+  );
+}
