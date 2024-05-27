@@ -39,6 +39,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 5px;
 }
 .connect-wallet__connected-address,
 .connect-wallet__connected-balance {
@@ -47,13 +48,20 @@
   gap: 5px;
 }
 .connect-wallet__connected-balance {
-  flex-direction: row-reverse;
+  flex-shrink: 1;
+  min-width: 26px;
   border-radius: 100px;
   padding: 5px;
+  gap: 0px;
   font-size: 14px;
   background: var(--foreground-button-color-1);
   color: var(--background-button-color-1);
 }
 .connect-wallet__connected-balance--loaded {
   padding-left: 10px;
+  gap: 5px;
+}
+.connect-wallet__connected-balance-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

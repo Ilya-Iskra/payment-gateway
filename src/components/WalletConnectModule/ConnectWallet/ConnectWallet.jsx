@@ -12,7 +12,7 @@ function ButtonInner({ isConnected, address, truncatedAddress, chain }) {
     return (
       <span className="connect-wallet__not-connected">
         <span className="connect-wallet__not-connected-text">
-          Connect Wallet
+          Connect wallet
         </span>
         <WalletConnectLogo className="connect-wallet__not-connected-icon" />
       </span>
@@ -29,8 +29,10 @@ function ButtonInner({ isConnected, address, truncatedAddress, chain }) {
         <span
           className={`connect-wallet__connected-balance ${balance?.formatted && "connect-wallet__connected-balance--loaded"}`}
         >
+          <span className="connect-wallet__connected-balance-text">
+            {balance?.formatted}
+          </span>
           <ChainIcon id={chain.id} size={16} />
-          {balance?.formatted}
         </span>
       </span>
     );
