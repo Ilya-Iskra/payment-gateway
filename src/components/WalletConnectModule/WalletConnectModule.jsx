@@ -8,7 +8,7 @@ import "./WalletConnectModule.css";
 function WalletConnectModule() {
   const {
     data: hash,
-    error,
+    // error,
     isPending,
     sendTransaction,
   } = useSendTransaction();
@@ -42,6 +42,7 @@ function WalletConnectModule() {
               isConnected={isConnected}
               isPending={isPending}
               isConfirming={isConfirming}
+              isConfirmed={isConfirmed}
               address={address}
               truncatedAddress={truncatedAddress}
               chain={chain}
@@ -51,13 +52,10 @@ function WalletConnectModule() {
               <SendTransaction
                 isPending={isPending}
                 isConfirming={isConfirming}
+                isConfirmed={isConfirmed}
                 onClick={payWithWallet}
               />
             )}
-            {hash && <div>Transaction Hash: {hash}</div>}
-            {isConfirming && <div>Waiting for confirmation...</div>}
-            {isConfirmed && <div>Transaction confirmed.</div>}
-            {error && <div>Error: {error.shortMessage || error.message}</div>}
           </div>
         );
       }}

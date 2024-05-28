@@ -11,3 +11,27 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.nim-button-1 {
+  padding: 0;
+
+  border: none;
+  border-radius: 100px;
+
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 400;
+
+  transition-property: filter, background-color, color;
+  transition-duration: 0.15s;
+  transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+}
+.nim-button-1:not(:disabled) {
+  cursor: pointer;
+}
+.nim-button-1:not(:disabled):hover {
+  filter: brightness(0.9);
+}
+.nim-button-1:not(:disabled):active {
+  filter: brightness(0.8);
+}

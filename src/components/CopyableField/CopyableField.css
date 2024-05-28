@@ -19,7 +19,7 @@
 .copyable-field__text {
   padding: 5px 10px;
   font-size: 12px;
-  background: var(--background-color-3);
+  background: var(--background-color-1);
   border-radius: 100px;
 }
 .copyable-field__tooltip {
@@ -36,7 +36,7 @@
   pointer-events: none;
 
   border-radius: 100px;
-  background: var(--background-color-3);
+  background: var(--background-color-1);
   color: var(--foreround-color-1);
 
   z-index: 99;
@@ -58,5 +58,5 @@
   transform: translateX(-50%);
   border: 7px solid transparent;
   border-top-width: 0;
-  border-bottom-color: var(--background-color-3);
+  border-bottom-color: var(--background-color-1);
 }

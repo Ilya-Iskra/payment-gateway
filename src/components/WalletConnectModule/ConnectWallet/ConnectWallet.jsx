@@ -42,6 +42,7 @@ export default function ConnectWallet({
   isConnected,
   isPending,
   isConfirming,
+  isConfirmed,
   address,
   truncatedAddress,
   chain,
@@ -49,8 +50,8 @@ export default function ConnectWallet({
 }) {
   return (
     <button
-      className="connect-wallet"
-      disabled={isPending || isConfirming}
+      className="nim-button-1 connect-wallet"
+      disabled={isPending || isConfirming || isConfirmed}
       onClick={onClick}
     >
       <ButtonInner
