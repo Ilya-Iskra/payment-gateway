@@ -38,6 +38,7 @@
 }
 
 .payment-page__lot {
+  text-align: center;
   margin-bottom: 30px;
   display: flex;
   align-items: center;
