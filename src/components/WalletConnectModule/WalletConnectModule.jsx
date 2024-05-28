@@ -6,7 +6,7 @@ import { useSendTransaction, useWaitForTransactionReceipt } from "wagmi";
 import { parseEther } from "viem";
 import "./WalletConnectModule.css";
 
-function WalletConnectModule() {
+function WalletConnectModule({ address, amount }) {
   const {
     data: hash,
     error,
@@ -20,9 +20,7 @@ function WalletConnectModule() {
     });
 
   async function payWithWallet() {
-    const to = "0x9B345C57FAD706e349DA441E939282a4bCA0632E";
-    const value = "0.0001";
-    sendTransaction({ to, value: parseEther(value) });
+    sendTransaction({ to: address, value: parseEther(amount) });
   }
 
   return (
