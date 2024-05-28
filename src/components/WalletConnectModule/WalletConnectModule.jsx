@@ -1,5 +1,6 @@
 import ConnectWallet from "./ConnectWallet";
 import SendTransaction from "./SendTransaction";
+import ErrorBox from "../ErrorBox";
 import { ConnectKitButton } from "connectkit";
 import { useSendTransaction, useWaitForTransactionReceipt } from "wagmi";
 import { parseEther } from "viem";
@@ -8,7 +9,7 @@ import "./WalletConnectModule.css";
 function WalletConnectModule() {
   const {
     data: hash,
-    // error,
+    error,
     isPending,
     sendTransaction,
   } = useSendTransaction();
@@ -56,6 +57,7 @@ function WalletConnectModule() {
                 onClick={payWithWallet}
               />
             )}
+            <ErrorBox error={error?.shortMessage} />
           </div>
         );
       }}

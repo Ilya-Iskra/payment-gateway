@@ -1,5 +1,5 @@
 import WalletConnectLogo from "/src/assets/walletConnectLogo.svg?react";
-import Success from "/src/assets/success.svg?react";
+import Check from "/src/assets/check.svg?react";
 import "./SendTransaction.css";
 
 function ButtonInner({ isPending, isConfirming, isConfirmed }) {
@@ -7,14 +7,14 @@ function ButtonInner({ isPending, isConfirming, isConfirmed }) {
     return (
       <span className="send-transaction__inner">
         <span className="send-transaction__text">Transaction is over</span>
-        <Success className="send-transaction__icon" />
+        <Check className="send-transaction__icon" />
       </span>
     );
   else if (isConfirming)
     return (
       <span className="send-transaction__text">Transaction is pending</span>
     );
-  else if (isPending) return "Confirming";
+  else if (isPending) return "Transaction confirmation";
   else
     return (
       <span className="send-transaction__inner">

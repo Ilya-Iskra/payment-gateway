@@ -1,0 +1,51 @@
+.error-box {
+  margin-top: 10px;
+  padding: 8px 9px 8px 14px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--failure-color);
+  color: var(--failure-color);
+  border-radius: 15px;
+}
+.error-box > * {
+  position: relative;
+  z-index: 1;
+}
+.error-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--failure-color);
+  opacity: 0.075;
+  pointer-events: none;
+}
+
+.error-box__text {
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+.error-box__close {
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+}
+.error-box__close-icon {
+  height: 40%;
+}
+.error-box__close-icon path {
+  fill: var(--failure-color);
+  stroke: var(--failure-color);
+}
