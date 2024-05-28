@@ -1,34 +1,27 @@
-import { useSendTransaction, useWaitForTransactionReceipt } from "wagmi";
-import { parseEther } from "viem";
+import WalletConnectLogo from "/src/assets/walletConnectLogo.svg?react";
+import "./SendTransaction.css";
 
-export default function SendTransaction() {
-  const {
-    data: hash,
-    error,
-    isPending,
-    sendTransaction,
-  } = useSendTransaction();
+function ButtonInner({ isPending }) {
+  if (isPending) return "Confirming...";
+  else
+    return (
+      <span className="send-transaction__inner">
+        <span className="send-transaction__text">Pay with WalletConnect</span>
+        <WalletConnectLogo className="send-transaction__icon" />
+      </span>
+    );
+}
 
-  async function submit() {
-    const to = "0x9B345C57FAD706e349DA441E939282a4bCA0632E";
-    const value = "0.0001";
-    sendTransaction({ to, value: parseEther(value) });
-  }
-
-  const { isLoading: isConfirming, isSuccess: isConfirmed } =
-    useWaitForTransactionReceipt({
-      hash,
-    });
-
+export default function SendTransaction({ isPending, isConfirming, onClick }) {
   return (
     <>
-      <button disabled={isPending} onClick={submit}>
-        {isPending ? "Confirming..." : "Send"}
+      <button
+        className="send-transaction"
+        disabled={isPending || isConfirming}
+        onClick={onClick}
+      >
+        <ButtonInner isPending={isPending} />
       </button>
-      {hash && <div>Transaction Hash: {hash}</div>}
-      {isConfirming && <div>Waiting for confirmation...</div>}
-      {isConfirmed && <div>Transaction confirmed.</div>}
-      {error && <div>Error: {error.shortMessage || error.message}</div>}
     </>
   );
 }

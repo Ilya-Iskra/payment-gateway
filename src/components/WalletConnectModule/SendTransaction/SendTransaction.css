@@ -1,0 +1,38 @@
+.send-transaction {
+  width: 100%;
+  height: 40px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 100px;
+
+  background: var(--foreground-button-color-1);
+  color: var(--background-button-color-1);
+
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 400;
+
+  cursor: pointer;
+  transition: filter 0.15s ease-out;
+}
+.send-transaction:hover {
+  filter: brightness(0.9);
+}
+.send-transaction:active {
+  filter: brightness(0.8);
+}
+
+.send-transaction__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.send-transaction__icon {
+  height: 18px;
+}
+.send-transaction__icon path {
+  fill: var(--background-button-color-1);
+}

@@ -40,13 +40,19 @@ function ButtonInner({ isConnected, address, truncatedAddress, chain }) {
 
 export default function ConnectWallet({
   isConnected,
+  isPending,
+  isConfirming,
   address,
   truncatedAddress,
   chain,
   onClick,
 }) {
   return (
-    <button className="connect-wallet" onClick={onClick}>
+    <button
+      className="connect-wallet"
+      disabled={isPending || isConfirming}
+      onClick={onClick}
+    >
       <ButtonInner
         isConnected={isConnected}
         address={address}
