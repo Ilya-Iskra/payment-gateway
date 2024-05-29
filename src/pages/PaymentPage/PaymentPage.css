@@ -32,6 +32,7 @@
   margin-bottom: 10px;
 }
 .payment-page__copy .copyable-field__text {
+  width: 100%;
   display: flex;
   align-items: center;
 }
