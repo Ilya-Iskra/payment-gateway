@@ -30,7 +30,7 @@ function PaymentPage() {
     <Centered>
       <ContentBox className="payment-page">
         <div className="payment-page__header">
-          <div className="payment-page__header-text">Payment gateway</div>
+          <h1 className="payment-page__header-text">Payment gateway</h1>
           <Logo className="payment-page__logo" />
         </div>
         <QRCode

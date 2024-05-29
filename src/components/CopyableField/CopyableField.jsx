@@ -27,7 +27,9 @@ function CopyableField({ data, className, style }) {
       <button className="copyable-field__copy">
         <Copy className="copyable-field__copy-icon" />
       </button>
-      <div className="copyable-field__text">{data}</div>
+      <div className="copyable-field__text" data-data={data}>
+        <div className="copyable-field__text-inner">{data}</div>
+      </div>
       <div
         className={`copyable-field__tooltip ${isCopied && "copyable-field__tooltip--visible"}`}
       >

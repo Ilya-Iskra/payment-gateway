@@ -11,16 +11,54 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 15px;
 }
 .payment-page__header-text {
+  flex: none;
   font-size: 24px;
+  font-weight: normal;
 }
 .payment-page__logo {
   height: 44px;
 }
+@media screen and (max-width: 425px) {
+  .payment-page__header-text {
+    font-size: 20px;
+  }
+}
 
 .payment-page__copy {
+  max-width: 100%;
   margin-bottom: 10px;
+}
+.payment-page__copy .copyable-field__text {
+  display: flex;
+  align-items: center;
+}
+.payment-page__copy .copyable-field__text-inner,
+.payment-page__copy .copyable-field__text::after {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.payment-page__copy .copyable-field__text::after {
+  order: 2;
+  direction: rtl;
+}
+.payment-page__copy .copyable-field__text::before {
+  order: 1;
+  flex-shrink: 0;
+  white-space: pre;
+}
+@media screen and (max-width: 425px) {
+  .payment-page__copy .copyable-field__text::before {
+    content: ". . .";
+  }
+  .payment-page__copy .copyable-field__text::after {
+    content: attr(data-data);
+  }
 }
 
 .payment-page__price {
