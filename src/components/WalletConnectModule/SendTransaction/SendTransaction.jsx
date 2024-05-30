@@ -33,7 +33,9 @@ export default function SendTransaction({
   return (
     <>
       <button
-        className={`nim-button-1 send-transaction ${isConfirming && "send-transaction--confirming"} ${isConfirmed && "send-transaction--confirmed"}`}
+        className={`nim-button-1 send-transaction ${
+          isConfirming && "send-transaction--confirming"
+        } ${isConfirmed && "send-transaction--confirmed"}`}
         disabled={isPending || isConfirming || isConfirmed}
         onClick={onClick}
       >

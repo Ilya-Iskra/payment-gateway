@@ -27,7 +27,9 @@ function ButtonInner({ isConnected, address, truncatedAddress, chain }) {
           </span>
         </span>
         <span
-          className={`connect-wallet__connected-balance ${balance?.formatted && "connect-wallet__connected-balance--loaded"}`}
+          className={`connect-wallet__connected-balance ${
+            balance?.formatted && "connect-wallet__connected-balance--loaded"
+          }`}
         >
           <span className="connect-wallet__connected-balance-text">
             {balance?.formatted}
