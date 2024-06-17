@@ -42,11 +42,23 @@ function QRCode({ address, amount, className, style }) {
   }, [address, amount]);
 
   return (
-    <div className={className} style={style} ref={ref}>
-      <div className="qrcode__loader-wrapper">
-        <div className="qrcode__loader"></div>
+    <a
+      href={`ethereum:${address}?amount=${amount}`}
+      className={`qrcode ${className}`}
+      style={style}
+    >
+      <div ref={ref}>
+        <div className="qrcode__loader-wrapper">
+          <div className="qrcode__loader"></div>
+        </div>
       </div>
-    </div>
+      <span
+        href={`ethereum:${address}?amount=${amount}`}
+        className="qrcode__text"
+      >
+        Open QR link
+      </span>
+    </a>
   );
 }
 
