@@ -2,7 +2,6 @@ import Centered from "/src/layouts/Cetnered/Centered.layout";
 import ContentBox from "/src/components/ContentBox";
 import CopyableField from "/src/components/CopyableField/CopyableField";
 import QRCode from "/src/components/QRCode";
-import Logo from "/src/assets/logo.svg?react";
 import WalletConnectModule from "/src/components/WalletConnectModule";
 import { isAddress, parseEther } from "viem";
 import "./PaymentPage.css";
@@ -31,7 +30,6 @@ function PaymentPage() {
       <ContentBox className="payment-page">
         <div className="payment-page__header">
           <h1 className="payment-page__header-text">Payment gateway</h1>
-          <Logo className="payment-page__logo" />
         </div>
         <QRCode
           address={transactionData.address}

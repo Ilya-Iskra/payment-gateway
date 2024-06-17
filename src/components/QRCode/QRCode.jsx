@@ -21,10 +21,10 @@ const qrCode = new QRCodeStyling({
   backgroundOptions: {
     color: "transparent",
   },
-  image: "./logo-head.png",
-  imageOptions: {
-    margin: 5,
-  },
+  // image: "./logo-head.png",
+  // imageOptions: {
+  //   margin: 5,
+  // },
 });
 
 function QRCode({ address, amount, className, style }) {

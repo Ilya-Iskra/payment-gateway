@@ -18,9 +18,6 @@
   font-size: 24px;
   font-weight: normal;
 }
-.payment-page__logo {
-  height: 44px;
-}
 @media screen and (max-width: 425px) {
   .payment-page__header-text {
     font-size: 20px;
