@@ -1,0 +1,16 @@
+.countdown {
+  padding: 5px 0px;
+  width: 55px;
+
+  text-align: center;
+
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 500;
+
+  color: var(--foreground-button-color-1);
+  background-color: var(--background-button-color-1);
+
+  border-radius: 1000px;
+  user-select: none;
+}
