@@ -4,7 +4,7 @@ import ErrorBox from "/src/components/ErrorBox";
 import { ConnectKitButton } from "connectkit";
 import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import { parseUnits } from "viem";
-import abi from "/src/chains/abi";
+import chains from "/src/chains";
 import "./WalletConnectModule.css";
 
 function WalletConnectModule({ address, amount }) {
@@ -15,10 +15,10 @@ function WalletConnectModule({ address, amount }) {
       hash,
     });
 
-  async function payWithWallet() {
+  async function payWithWallet(chain) {
     writeContract({
-      abi,
-      address: "0xf703b9aB8931B6590CFc95183be4fEf278732016",
+      abi: chains[chain.id].abi,
+      address: chains[chain.id].AGIXAddress,
       functionName: "transfer",
       args: [address, parseUnits(amount, 8)],
     });
@@ -53,7 +53,7 @@ function WalletConnectModule({ address, amount }) {
                 isPending={isPending}
                 isConfirming={isConfirming}
                 isConfirmed={isConfirmed}
-                onClick={payWithWallet}
+                onClick={() => payWithWallet(chain)}
               />
             )}
             <ErrorBox error={error?.shortMessage} />
