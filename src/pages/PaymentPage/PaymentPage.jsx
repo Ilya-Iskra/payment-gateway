@@ -4,14 +4,14 @@ import CountdownTimer from "/src/components/CountdownTimer";
 import QRCode from "/src/components/QRCode";
 import CopyableField from "/src/components/CopyableField/CopyableField";
 import WalletConnectModule from "/src/components/WalletConnectModule";
-import { isAddress, parseEther } from "viem";
+import { isAddress, parseUnits } from "viem";
 import "./PaymentPage.css";
 import { useState } from "react";
 
 function parseAmount(amount) {
   try {
-    parseEther(amount);
-    return parseFloat(amount);
+    parseUnits(amount, 8);
+    return String(parseFloat(amount));
   } catch {
     return null;
   }
