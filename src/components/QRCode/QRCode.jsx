@@ -34,19 +34,15 @@ function QRCode({ address, amount, className, style }) {
     qrCode.append(ref.current);
   }, []);
 
+  const link = `ethereum:${address}?amount=${amount}`;
   useEffect(() => {
-    const data = `ethereum:${address}?amount=${amount}`;
     qrCode.update({
-      data,
+      data: link,
     });
-  }, [address, amount]);
+  }, [link]);
 
   return (
-    <a
-      href={`ethereum:${address}?amount=${amount}`}
-      className={`qrcode ${className}`}
-      style={style}
-    >
+    <a href={link} className={`qrcode ${className}`} style={style}>
       <div ref={ref}>
         <div className="qrcode__loader-wrapper">
           <div className="qrcode__loader"></div>
