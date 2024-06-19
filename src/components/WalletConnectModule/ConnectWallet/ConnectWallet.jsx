@@ -10,8 +10,8 @@ function ButtonInner({ isConnected, address, truncatedAddress, chain }) {
   const { address: userAddress } = useAccount();
 
   const { data: balance } = useReadContract({
-    abi: chains[chain.id].abi,
-    address: chains[chain.id].AGIXAddress,
+    abi: chain && chains[chain.id].abi,
+    address: chain && chains[chain.id].AGIXAddress,
     functionName: "balanceOf",
     args: [userAddress],
   });
