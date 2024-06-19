@@ -5,6 +5,7 @@ import "./QRCode.css";
 const qrCode = new QRCodeStyling({
   width: 200,
   height: 200,
+  margin: 10,
   type: "svg",
   dotsOptions: {
     color: "#ffffff",
