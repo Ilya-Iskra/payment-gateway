@@ -62,7 +62,8 @@ jobs:
         run: pnpm build
         env:
           VITE_PUBLIC_WALLETCONNECT_PROJECT_ID: ${{ vars.VITE_PUBLIC_WALLETCONNECT_PROJECT_ID }}
-          VITE_PUBLIC_ALCHEMY_ID: ${{ vars.VITE_PUBLIC_ALCHEMY_ID }}
+          VITE_MAINNET_RPC_URL: ${{ vars.VITE_MAINNET_RPC_URL }}
+          VITE_SEPOLIA_RPC_URL: ${{ vars.VITE_SEPOLIA_RPC_URL }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

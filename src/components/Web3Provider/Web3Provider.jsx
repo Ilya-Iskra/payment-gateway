@@ -1,5 +1,5 @@
 import { WagmiProvider, createConfig, http } from "wagmi";
-import { mainnet } from "wagmi/chains";
+import { mainnet, sepolia } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 import Theme from "./theme.json";
@@ -7,12 +7,11 @@ import Theme from "./theme.json";
 const config = createConfig(
   getDefaultConfig({
     // Your dApps chains
-    chains: [mainnet],
+    chains: [mainnet, sepolia],
     transports: {
       // RPC URL for each chain
-      [mainnet.id]: http(
-        `https://eth-mainnet.g.alchemy.com/v2/${import.meta.env.VITE_PUBLIC_ALCHEMY_ID}`
-      ),
+      [mainnet.id]: http(import.meta.env.VITE_MAINNET_RPC_URL),
+      [sepolia.id]: http(import.meta.env.VITE_SEPOLIA_RPC_URL),
     },
 
     // Required API Keys
