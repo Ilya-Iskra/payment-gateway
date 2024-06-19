@@ -23,9 +23,8 @@ function PaymentPage() {
     address: isAddress(urlParams.get("address"))
       ? urlParams.get("address")
       : "0x9B345C57FAD706e349DA441E939282a4bCA0632E",
-    amount: parseAmount(urlParams.get("amount")) || "0.00001",
+    amount: parseAmount(urlParams.get("amount")) || "1.5",
     expiry: urlParams.get("expiry") || Date.now() + 15 * 60 * 1000,
-    currency: urlParams.get("currency") || "ETH",
   };
 
   const [isExpired, setIsExpired] = useState(
@@ -65,9 +64,7 @@ function PaymentPage() {
             <span className="payment-page__price-number">
               {transactionData.amount}
             </span>
-            <span className="payment-page__price-name">
-              {transactionData.currency}
-            </span>
+            <span className="payment-page__price-name">AGIX</span>
           </div>
           <div className="payment-page__lot">
             <div className="payment-page__lot-name">

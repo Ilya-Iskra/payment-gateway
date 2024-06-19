@@ -47,3 +47,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.connect-wallet__connected-icons {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.connect-wallet__connected-currency-icon {
+  height: 18px;
+  width: 18px;
+}

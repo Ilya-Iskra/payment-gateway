@@ -1,12 +1,22 @@
-import { useBalance } from "wagmi";
+import { useAccount, useReadContract } from "wagmi";
 import { ChainIcon, Avatar } from "connectkit";
+import { formatUnits } from "viem";
 import WalletConnectLogo from "/src/assets/walletConnectLogo.svg?react";
+import AGIXLogo from "/src/assets/agix.svg?react";
+import abi from "/src/chains/abi";
 import "./ConnectWallet.css";
 
 function ButtonInner({ isConnected, address, truncatedAddress, chain }) {
-  const { data: balance } = useBalance({
-    address,
+  const { address: userAddress } = useAccount();
+
+  const { data: balance } = useReadContract({
+    abi,
+    address: "0xf703b9aB8931B6590CFc95183be4fEf278732016",
+    functionName: "balanceOf",
+    args: [userAddress],
   });
+
+  const hasBalance = typeof balance === "bigint";
 
   if (!isConnected)
     return (
@@ -28,13 +38,16 @@ function ButtonInner({ isConnected, address, truncatedAddress, chain }) {
         </span>
         <span
           className={`connect-wallet__connected-balance ${
-            balance?.formatted && "connect-wallet__connected-balance--loaded"
+            hasBalance && "connect-wallet__connected-balance--loaded"
           }`}
         >
           <span className="connect-wallet__connected-balance-text">
-            {balance?.formatted}
+            {hasBalance && formatUnits(balance, 8)}
           </span>
-          <ChainIcon id={chain.id} size={16} />
+          <div className="connect-wallet__connected-icons">
+            <AGIXLogo className="connect-wallet__connected-currency-icon" />
+            <ChainIcon id={chain.id} size={12} />
+          </div>
         </span>
       </span>
     );

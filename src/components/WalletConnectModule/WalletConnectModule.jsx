@@ -1,18 +1,14 @@
 import ConnectWallet from "./ConnectWallet";
 import SendTransaction from "./SendTransaction";
-import ErrorBox from "../ErrorBox";
+import ErrorBox from "/src/components/ErrorBox";
 import { ConnectKitButton } from "connectkit";
-import { useSendTransaction, useWaitForTransactionReceipt } from "wagmi";
-import { parseEther } from "viem";
+import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
+import { parseUnits } from "viem";
+import abi from "/src/chains/abi";
 import "./WalletConnectModule.css";
 
 function WalletConnectModule({ address, amount }) {
-  const {
-    data: hash,
-    error,
-    isPending,
-    sendTransaction,
-  } = useSendTransaction();
+  const { data: hash, error, isPending, writeContract } = useWriteContract();
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } =
     useWaitForTransactionReceipt({
@@ -20,7 +16,12 @@ function WalletConnectModule({ address, amount }) {
     });
 
   async function payWithWallet() {
-    sendTransaction({ to: address, value: parseEther(amount) });
+    writeContract({
+      abi,
+      address: "0xf703b9aB8931B6590CFc95183be4fEf278732016",
+      functionName: "transfer",
+      args: [address, parseUnits(amount, 8)],
+    });
   }
 
   return (
