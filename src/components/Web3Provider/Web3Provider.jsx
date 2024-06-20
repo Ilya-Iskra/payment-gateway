@@ -4,15 +4,22 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 import Theme from "./theme.json";
 
+const chains = [mainnet];
+const transports = {
+  // RPC URL for each chain
+  [mainnet.id]: http(import.meta.env.VITE_MAINNET_RPC_URL),
+};
+
+if (import.meta.env.VITE_SEPOLIA_RPC_URL) {
+  chains.push(sepolia);
+  transports[sepolia.id] = http(import.meta.env.VITE_SEPOLIA_RPC_URL);
+}
+
 const config = createConfig(
   getDefaultConfig({
     // Your dApps chains
-    chains: [mainnet, sepolia],
-    transports: {
-      // RPC URL for each chain
-      [mainnet.id]: http(import.meta.env.VITE_MAINNET_RPC_URL),
-      [sepolia.id]: http(import.meta.env.VITE_SEPOLIA_RPC_URL),
-    },
+    chains,
+    transports,
 
     // Required API Keys
     walletConnectProjectId: import.meta.env

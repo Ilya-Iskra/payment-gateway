@@ -1,4 +1,4 @@
-import { useAccount, useReadContract } from "wagmi";
+import { useAccount, useConfig, useReadContract } from "wagmi";
 import { ChainIcon, Avatar } from "connectkit";
 import { formatUnits } from "viem";
 import WalletConnectLogo from "/src/assets/walletConnectLogo.svg?react";
@@ -15,8 +15,12 @@ function ButtonInner({ isConnected, address, truncatedAddress, chain }) {
     functionName: "balanceOf",
     args: [userAddress],
   });
-
   const hasBalance = typeof balance === "bigint";
+
+  const {
+    chains: { length: chainsLength },
+  } = useConfig();
+  const isMultiChain = chainsLength > 1;
 
   if (!isConnected)
     return (
@@ -46,7 +50,7 @@ function ButtonInner({ isConnected, address, truncatedAddress, chain }) {
           </span>
           <div className="connect-wallet__connected-icons">
             <AGIXLogo className="connect-wallet__connected-currency-icon" />
-            <ChainIcon id={chain.id} size={12} />
+            {isMultiChain && <ChainIcon id={chain.id} size={12} />}
           </div>
         </span>
       </span>
