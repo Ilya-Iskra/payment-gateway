@@ -6,8 +6,7 @@ import "./vars.css";
 import "./reset.css";
 import "./index.css";
 
-if (import.meta.env.DEV || !import.meta.env.VITE_BACKEND_URL)
-  await enableMocking();
+if (!import.meta.env.VITE_BACKEND_URL) await enableMocking();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
