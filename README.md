@@ -1,5 +1,11 @@
 # NIM Gateway
 
+## Install pnpm
+
+```
+npm install -g pnpm
+```
+
 ## Project setup
 
 ```
