@@ -82,6 +82,7 @@ function PaymentPage() {
           {/* <div className="payment-page__lot-description">for 15 requests</div> */}
         </div>
         <WalletConnectModule
+          id={id}
           address={transaction.data.toAddress}
           amount={transaction.data.amount}
         />

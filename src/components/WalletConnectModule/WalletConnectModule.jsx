@@ -1,18 +1,17 @@
+import { useEffect } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import ConnectWallet from "./ConnectWallet";
 import SendTransaction from "./SendTransaction";
 import ErrorBox from "/src/components/ErrorBox";
 import { ConnectKitButton } from "connectkit";
 import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import chains from "/src/chains";
+import api from "/src/api";
+import apiKeys from "/src/api/keys.json";
 import "./WalletConnectModule.css";
 
-function WalletConnectModule({ address, amount }) {
+function WalletConnectModule({ id, address, amount }) {
   const { data: hash, error, isPending, writeContract } = useWriteContract();
-
-  const { isLoading: isConfirming, isSuccess: isConfirmed } =
-    useWaitForTransactionReceipt({
-      hash,
-    });
 
   async function payWithWallet(chain) {
     writeContract({
@@ -22,6 +21,24 @@ function WalletConnectModule({ address, amount }) {
       args: [address, amount],
     });
   }
+
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation({
+    mutationFn: ({ id, hash }) => api[apiKeys.SEND_HASH](id, hash),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [apiKeys.GET_PAYMENT] });
+    },
+  });
+
+  useEffect(() => {
+    if (!hash) return;
+    mutate({ id, hash });
+  }, [mutate, id, hash]);
+
+  const { isLoading: isConfirming, isSuccess: isConfirmed } =
+    useWaitForTransactionReceipt({
+      hash,
+    });
 
   return (
     <ConnectKitButton.Custom>
