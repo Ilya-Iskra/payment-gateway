@@ -1,6 +1,8 @@
 import { delay, http, HttpResponse } from "msw";
 
-const BASE_URL = import.meta.env.VITE_BACKEND_URL || window.location.origin;
+const BASE_URL =
+  import.meta.env.VITE_BACKEND_URL ||
+  `${window.location.origin}${import.meta.env.BASE_URL.slice(0, -1)}`;
 
 const createdAt = new Date();
 const expiresAt = new Date(createdAt);

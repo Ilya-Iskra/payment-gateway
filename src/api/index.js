@@ -5,13 +5,15 @@ const JSONbig = JSONbigDefault({
 });
 import apiKeys from "./keys.json";
 
-const BASE_URL = import.meta.env.VITE_BACKEND_URL || window.location.origin;
+const BASE_URL =
+  import.meta.env.VITE_BACKEND_URL ||
+  `${window.location.origin}${import.meta.env.BASE_URL.slice(0, -1)}`;
 
 async function fetchServer(
   path,
   { method = "GET", query, body, parseBigNumber }
 ) {
-  const url = new URL(path, BASE_URL);
+  const url = new URL(`${BASE_URL}${path}`);
   for (const key in query) url.searchParams.set(key, query[key]);
 
   const options = { method };
