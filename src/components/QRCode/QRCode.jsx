@@ -28,33 +28,27 @@ const qrCode = new QRCodeStyling({
   // },
 });
 
-function QRCode({ address, amount, className, style }) {
+function QRCode({ url, className, style }) {
   const ref = useRef(null);
 
   useEffect(() => {
     qrCode.append(ref.current);
   }, []);
 
-  const link = `ethereum:${address}?amount=${amount}`;
   useEffect(() => {
     qrCode.update({
-      data: link,
+      data: url,
     });
-  }, [link]);
+  }, [url]);
 
   return (
-    <a href={link} className={`qrcode ${className}`} style={style}>
+    <a href={url} className={`qrcode ${className}`} style={style}>
       <div ref={ref}>
         <div className="qrcode__loader-wrapper">
-          <div className="qrcode__loader"></div>
+          <div className="qrcode__loader loader-1"></div>
         </div>
       </div>
-      <span
-        href={`ethereum:${address}?amount=${amount}`}
-        className="qrcode__text"
-      >
-        Open QR link
-      </span>
+      <span className="qrcode__text">Open QR link</span>
     </a>
   );
 }

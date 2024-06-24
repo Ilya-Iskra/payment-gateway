@@ -1,15 +1,19 @@
-.expired-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 30px;
+.pending-loader {
+  width: 40px;
 }
 
+.error-page,
+.expired-page,
 .payment-page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 30px 48px;
+  text-align: center;
+  padding: 20px 30px;
+}
+
+.payment-page {
+  padding-bottom: 48px;
 }
 
 .payment-page__header {

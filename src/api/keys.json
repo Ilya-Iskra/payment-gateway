@@ -1,0 +1,4 @@
+{
+  "GET_PAYMENT": "getPayment",
+  "SEND_HASH": "sendHash"
+}

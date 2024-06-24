@@ -35,3 +35,80 @@
 .nim-button-1:not(:disabled):active {
   filter: brightness(0.8);
 }
+
+/* Animation classes */
+.fade-zoom-in {
+  animation: zoomIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Loaders */
+.loader-1 {
+  aspect-ratio: 1;
+  color: #fff;
+  border: 2px solid;
+  border-radius: 10px;
+  box-sizing: border-box;
+  --c: radial-gradient(
+    farthest-side,
+    #0000 calc(100% - 3px),
+    currentColor calc(100% - 2px) 98%,
+    #0000
+  );
+  background: var(--c), var(--c);
+  background-size: 23px 23px;
+  background-position:
+    0 0,
+    12px 12px;
+  animation: loader-1 1s infinite;
+}
+@keyframes loader-1 {
+  100% {
+    background-position:
+      -23px 0px,
+      12px 35px;
+  }
+}
+
+.loader-2 {
+  aspect-ratio: 1;
+  color: #fff;
+  border: 2px solid;
+  display: grid;
+  box-sizing: border-box;
+  border-radius: 8px;
+  animation: l1 4s infinite linear;
+}
+.loader-2::before,
+.loader-2::after {
+  content: "";
+  grid-area: 1/1;
+  margin: auto;
+  width: 70.7%;
+  aspect-ratio: 1;
+  border: 2px solid;
+  box-sizing: content-box;
+  border-radius: 5px;
+  animation: inherit;
+}
+.loader-2::after {
+  width: 50%;
+  aspect-ratio: 1;
+  border: 2px solid;
+  border-radius: 2.5px;
+  animation-duration: 2s;
+}
+@keyframes l1 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
