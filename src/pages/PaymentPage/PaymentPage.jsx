@@ -12,13 +12,14 @@ import apiKeys from "/src/api/keys.json";
 import "./PaymentPage.css";
 
 function PaymentPage() {
+  const [isExpired, setIsExpired] = useState(false);
+
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get("id");
 
   const {
     data: transaction,
     isPending,
-    isError,
     error,
   } = useQuery({
     queryKey: [apiKeys.GET_PAYMENT, id],
@@ -26,15 +27,11 @@ function PaymentPage() {
     enabled: !!id,
   });
 
-  console.log({ error });
-
-  const [isExpired, setIsExpired] = useState(false);
-
-  if (!id || isError)
+  if (!id || error)
     return (
       <Centered>
         <ContentBox className="error-page fade-zoom-in">
-          {error.message}
+          {error?.message || "Payment ID is not specified"}
         </ContentBox>
       </Centered>
     );
