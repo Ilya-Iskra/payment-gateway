@@ -3,18 +3,26 @@ const JSONbig = JSONbigDefault({
   alwaysParseAsBig: true,
   useNativeBigInt: true,
 });
-
 import apiKeys from "./keys.json";
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL || window.location.origin;
 
-async function fetchServer(path, { query, parseBigNumber }) {
+async function fetchServer(
+  path,
+  { method = "GET", query, body, parseBigNumber }
+) {
   const url = new URL(path, BASE_URL);
   for (const key in query) url.searchParams.set(key, query[key]);
 
+  const options = { method };
+  if (body && Object.keys(body).length) {
+    options.headers = { "Content-Type": "application/json" };
+    options.body = JSON.stringify(body);
+  }
+
   let response;
   try {
-    response = await fetch(url);
+    response = await fetch(url, options);
   } catch (cause) {
     throw new Error(`A network error occured (${cause.message})`, {
       cause,
@@ -44,5 +52,10 @@ export default {
       parseBigNumber: true,
     });
   },
-  [apiKeys.SEND_HASH]() {},
+  async [apiKeys.SEND_HASH](id, txHash) {
+    return await fetchServer("/payment", {
+      method: "PUT",
+      body: { id, txHash },
+    });
+  },
 };
