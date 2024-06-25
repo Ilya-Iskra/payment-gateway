@@ -64,6 +64,8 @@ jobs:
           VITE_PUBLIC_WALLETCONNECT_PROJECT_ID: ${{ vars.VITE_PUBLIC_WALLETCONNECT_PROJECT_ID }}
           VITE_MAINNET_RPC_URL: ${{ vars.VITE_MAINNET_RPC_URL }}
           VITE_SEPOLIA_RPC_URL: ${{ vars.VITE_SEPOLIA_RPC_URL }}
+          VITE_BACKEND_URL: ${{ vars.VITE_BACKEND_URL }}
+          VITE_URL_PATH_PREFIX: ${{ vars.VITE_URL_PATH_PREFIX }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
