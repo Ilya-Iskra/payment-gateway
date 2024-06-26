@@ -10,30 +10,30 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.45.1",
-    "connectkit": "^1.8.1",
-    "json-bigint": "^1.0.0",
-    "qr-code-styling": "^1.5.0",
-    "react": "^18.3.1",
-    "react-countdown": "^2.3.5",
-    "react-dom": "^18.3.1",
-    "viem": "~2.13.10",
-    "vite-plugin-top-level-await": "^1.4.1",
-    "wagmi": "^2.10.2"
+    "@tanstack/react-query": "5.45.1",
+    "connectkit": "1.8.1",
+    "json-bigint": "1.0.0",
+    "qr-code-styling": "1.5.0",
+    "react": "18.3.1",
+    "react-countdown": "2.3.5",
+    "react-dom": "18.3.1",
+    "viem": "2.13.10",
+    "vite-plugin-top-level-await": "1.4.1",
+    "wagmi": "2.10.2"
   },
   "devDependencies": {
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-react": "^7.34.2",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-react-refresh": "^0.4.7",
-    "msw": "^2.3.1",
-    "prettier": "^3.3.2",
-    "vite": "^5.3.1",
-    "vite-plugin-svgr": "^4.2.0"
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "@vitejs/plugin-react": "4.3.1",
+    "eslint": "8.57.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-react": "7.34.2",
+    "eslint-plugin-react-hooks": "4.6.2",
+    "eslint-plugin-react-refresh": "0.4.7",
+    "msw": "2.3.1",
+    "prettier": "3.3.2",
+    "vite": "5.3.1",
+    "vite-plugin-svgr": "4.2.0"
   },
   "msw": {
     "workerDirectory": "./public"
