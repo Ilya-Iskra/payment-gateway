@@ -1,6 +1,7 @@
 .error-box {
   margin-top: 10px;
   padding: 8px 9px 8px 14px;
+  width: 100%;
 
   display: flex;
   justify-content: space-between;

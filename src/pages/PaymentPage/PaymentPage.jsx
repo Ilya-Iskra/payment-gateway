@@ -1,42 +1,46 @@
 import { useState } from "react";
 import { formatUnits } from "viem";
-import { useQuery } from "@tanstack/react-query";
+import usePayment from "./usePayment.hook";
+import useTransaction from "./useTransaction.hook";
 import Centered from "/src/layouts/Cetnered/Centered.layout";
 import ContentBox from "/src/components/ContentBox";
 import CountdownTimer from "/src/components/CountdownTimer";
 import QRCode from "/src/components/QRCode";
 import CopyableField from "/src/components/CopyableField/CopyableField";
 import WalletConnectModule from "/src/components/WalletConnectModule";
-import api from "/src/api";
-import apiKeys from "/src/api/keys.json";
+import ErrorBox from "/src/components/ErrorBox";
 import "./PaymentPage.css";
+
+const urlParams = new URLSearchParams(window.location.search);
+const paymentId = urlParams.get("id");
 
 function PaymentPage() {
   const [isExpired, setIsExpired] = useState(false);
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const id = urlParams.get("id");
+  const {
+    payment,
+    isPending: isPaymentPending,
+    error: paymentLoadingError,
+  } = usePayment(paymentId);
 
   const {
-    data: transaction,
-    isPending,
-    error,
-  } = useQuery({
-    queryKey: [apiKeys.GET_PAYMENT, id],
-    queryFn: () => api[apiKeys.GET_PAYMENT](id),
-    enabled: !!id,
-  });
+    sendTransaction,
+    isPending: isTransactionPending,
+    isConfirming: isTransactionConfirming,
+    isConfirmed: isTransactionConfirmed,
+    error: sendingTransactionError,
+  } = useTransaction(paymentId, payment?.toAddress, payment?.amount);
 
-  if (!id || error)
+  if (!paymentId || paymentLoadingError)
     return (
       <Centered>
         <ContentBox className="error-page fade-zoom-in">
-          {error?.message || "Payment ID is not specified"}
+          {paymentLoadingError?.message || "Payment ID is not specified"}
         </ContentBox>
       </Centered>
     );
 
-  if (isPending)
+  if (isPaymentPending)
     return (
       <Centered>
         <div className="pending-loader loader-2"></div>
@@ -59,30 +63,32 @@ function PaymentPage() {
           <h1 className="payment-page__header-text">Payment gateway</h1>
           <CountdownTimer
             className="payment-page__countdown"
-            expiry={transaction.data.expiresAt}
+            expiry={payment.expiresAt}
             onComplete={() => setIsExpired(true)}
           />
         </div>
-        <QRCode url={transaction.data.url} className="payment-page__qr" />
+        <QRCode url={payment.url} className="payment-page__qr" />
         <CopyableField
           className="payment-page__copy"
-          data={transaction.data.toAddress}
+          data={payment.toAddress}
         />
         <div className="payment-page__price">
           <span className="payment-page__price-number">
-            {formatUnits(transaction.data.amount, 8)}
+            {formatUnits(payment.amount, 8)}
           </span>
           <span className="payment-page__price-name">AGIX</span>
         </div>
         <div className="payment-page__lot">
-          <div className="payment-page__lot-name">{transaction.data.key}</div>
+          <div className="payment-page__lot-name">{payment.key}</div>
           {/* <div className="payment-page__lot-description">for 15 requests</div> */}
         </div>
         <WalletConnectModule
-          id={id}
-          address={transaction.data.toAddress}
-          amount={transaction.data.amount}
+          isPending={isTransactionPending}
+          isConfirming={isTransactionConfirming}
+          isConfirmed={isTransactionConfirmed}
+          sendTransaction={sendTransaction}
         />
+        <ErrorBox error={sendingTransactionError?.shortMessage} />
       </ContentBox>
     </Centered>
   );
