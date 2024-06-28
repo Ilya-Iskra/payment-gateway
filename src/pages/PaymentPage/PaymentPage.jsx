@@ -63,6 +63,7 @@ function PaymentPage() {
           <h1 className="payment-page__header-text">Payment gateway</h1>
           <CountdownTimer
             className="payment-page__countdown"
+            isPaused={isTransactionConfirming || isTransactionConfirmed}
             expiry={payment.expiresAt}
             onComplete={() => setIsExpired(true)}
           />
