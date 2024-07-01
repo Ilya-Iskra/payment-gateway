@@ -29,6 +29,9 @@ importers:
       react-dom:
         specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
+      singularitynet-token-contracts:
+        specifier: ^3.0.3
+        version: 3.0.3
       viem:
         specifier: 2.13.10
         version: 2.13.10(bufferutil@4.0.8)
@@ -1251,6 +1254,9 @@ packages:
 
   '@open-draft/until@2.1.0':
     resolution: {integrity: sha512-U69T3ItWHvLwGg5eJ0n3I62nWuE6ilHlmz7zM0npLBRvPRd7e6NYmg54vvRtP5mZG7kZqZCFVdsTWo7BPtBujg==}
+
+  '@openzeppelin/contracts@3.4.2':
+    resolution: {integrity: sha512-z0zMCjyhhp4y7XKAcDAi3Vgms4T2PstwBdahiO0+9NaGICQKjynK3wduSRplTgk4LXmoO1yfDGO5RbjKYxtuxA==}
 
   '@parcel/watcher-android-arm64@2.4.1':
     resolution: {integrity: sha512-LOi/WTbbh3aTn2RYddrO8pnapixAziFl6SMxHM69r3tvdSm94JtCenaKgk1GRg5FJ5wpMCpHeW+7yqPlvZv7kg==}
@@ -4353,6 +4359,9 @@ packages:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
 
+  singularitynet-token-contracts@3.0.3:
+    resolution: {integrity: sha512-y6qtPypFUQRgQTMefMEPQls6I3+B+BdOCQPOSnnlEcpqcrr2ZkXlH0IrNzaU5l64ppoTCf3wA3VUZPWiZ2aZMQ==}
+
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
@@ -6467,6 +6476,8 @@ snapshots:
       outvariant: 1.4.2
 
   '@open-draft/until@2.1.0': {}
+
+  '@openzeppelin/contracts@3.4.2': {}
 
   '@parcel/watcher-android-arm64@2.4.1':
     optional: true
@@ -10407,6 +10418,10 @@ snapshots:
   signal-exit@3.0.7: {}
 
   signal-exit@4.1.0: {}
+
+  singularitynet-token-contracts@3.0.3:
+    dependencies:
+      '@openzeppelin/contracts': 3.4.2
 
   sisteransi@1.0.5: {}
 

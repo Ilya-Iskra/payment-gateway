@@ -1,17 +1,18 @@
 import { useEffect } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
+import abi from "singularitynet-token-contracts/abi/SingularityNetToken.json";
+import chains from "singularitynet-token-contracts/networks/SingularityNetToken.json";
 import api from "/src/api";
 import apiKeys from "/src/api/keys.json";
-import chains from "/src/chains";
 
 export default function (paymentId, address, amount) {
   // Sending a transaction
   const { data: hash, error, isPending, writeContract } = useWriteContract();
   async function sendTransaction(chain) {
     await writeContract({
-      abi: chains[chain.id].abi,
-      address: chains[chain.id].AGIXAddress,
+      abi,
+      address: chains[chain.id].address,
       functionName: "transfer",
       args: [address, amount],
     });

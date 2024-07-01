@@ -1,17 +1,18 @@
 import { useAccount, useConfig, useReadContract } from "wagmi";
 import { ChainIcon, Avatar } from "connectkit";
 import { formatUnits } from "viem";
+import abi from "singularitynet-token-contracts/abi/SingularityNetToken.json";
+import chains from "singularitynet-token-contracts/networks/SingularityNetToken.json";
 import WalletConnectLogo from "/src/assets/walletConnectLogo.svg?react";
 import AGIXLogo from "/src/assets/agix.svg?react";
-import chains from "/src/chains";
 import "./ConnectWallet.css";
 
 function ButtonInner({ isConnected, address, truncatedAddress, chain }) {
   const { address: userAddress } = useAccount();
 
   const { data: balance } = useReadContract({
-    abi: chain && chains[chain.id].abi,
-    address: chain && chains[chain.id].AGIXAddress,
+    abi,
+    address: chain && chains[chain.id].address,
     functionName: "balanceOf",
     args: [userAddress],
   });
