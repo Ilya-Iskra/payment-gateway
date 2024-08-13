@@ -19,7 +19,7 @@
     "react-dom": "18.3.1",
     "singularitynet-token-contracts": "^3.0.3",
     "viem": "2.13.10",
-    "vite-plugin-top-level-await": "1.4.1",
+    "vite-plugin-top-level-await": "1.4.4",
     "wagmi": "2.10.2"
   },
   "devDependencies": {
